@@ -279,5 +279,22 @@
         "Configuration changed, all messages sent by users that didn't solve the captcha will be removed.",
 
     "RM_ALL_MSGS_AFTER_KICK_OFF":
-        "Configuration changed, messages sent by users that didn't solve the captcha won't be removed."
+        "Configuration changed, messages sent by users that didn't solve the captcha won't be removed.",
+        
+    "NEW_USER_NUMS_CAPTION_REVERSE":
+         "Bonjour {}, et bienvenue dans le groupe {}. Veuillez envoyer un message avec le numéro qui apparaît dans le captcha en inversant l'ordre des chiffres pour vérifier que vous êtes un humain. Si vous ne résolvez pas le captcha en {}, vous allez être automatiquement éjecté du groupe. Faites attention aux majuscules et minuscules.",
+
+    "NEW_USER_NUMS_CAPTION_ASCENDING":
+           "Bonjour {}, et bienvenue dans le groupe {}. Veuillez envoyer un message avec le numéro qui apparaît dans le captcha en rangeant les chiffres dans l'ordre croissant pour vérifier que vous êtes un humain. Si vous ne résolvez pas le captcha en {}, vous allez être automatiquement éjecté du groupe. Faites attention aux majuscules et minuscules.",
+
+    "NEW_USER_NUMS_CAPTION_DESCENDING":
+        "Bonjour {}, et bienvenue dans le groupe {}. Veuillez envoyer un message avec le numéro qui apparaît dans le captcha en rangeant les chiffres dans l'ordre décroissant pour vérifier que vous êtes un humain. Si vous ne résolvez pas le captcha en {}, vous allez être automatiquement éjecté du groupe. Faites attention aux majuscules et minuscules.",
+
+    "NEW_USER_NUMS_CAPTION_ODD_EVEN":
+        "Bonjour {}, et bienvenue dans le groupe {}. Veuillez envoyer un message avec le numéro qui apparaît dans le captcha en commençant par les chiffres pairs pour vérifier que vous êtes un humain. Si vous ne résolvez pas le captcha en {}, vous allez être automatiquement éjecté du groupe. Faites attention aux majuscules et minuscules.",
+
+    "NEW_USER_NUMS_CAPTION_EVEN_ODD":
+        "Bonjour {}, et bienvenue dans le groupe {}. Veuillez envoyer un message avec le numéro qui apparaît dans le captcha en commençant par les chiffres impairs pour vérifier que vous êtes un humain. Si vous ne résolvez pas le captcha en {}, vous allez être automatiquement éjecté du groupe. Faites attention aux majuscules et minuscules."
+
 }
+

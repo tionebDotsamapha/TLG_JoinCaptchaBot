@@ -80,6 +80,10 @@ from constants import (
     SCRIPT_PATH, CONST, TEXT
 )
 
+from fake_captcha import (
+    fake_number_changed, CAPTCHA_OPTION
+)
+
 ###############################################################################
 ### Globals
 
@@ -91,6 +95,7 @@ connections = {}
 th_0 = None
 th_1 = None
 force_exit = False
+captcha_option = None
 
 # Create Captcha Generator object of specified size (2 -> 640x360)
 CaptchaGen = CaptchaGenerator(2)
@@ -475,6 +480,7 @@ def load_texts_languages():
 
 def create_image_captcha(chat_id, file_name, difficult_level, captcha_mode):
     '''Generate an image captcha from pseudo numbers'''
+    global captcha_option
     # If it doesn't exists, create captchas folder to store generated captchas
     img_dir_path = "{}/{}".format(CONST["CAPTCHAS_DIR"], chat_id)
     img_file_path = "{}/{}.png".format(img_dir_path, file_name)
@@ -503,6 +509,11 @@ def create_image_captcha(chat_id, file_name, difficult_level, captcha_mode):
         captcha = CaptchaGen.gen_captcha_image(difficult_level, captcha_mode,
                 bool(randint(0, 1)))
         captcha_result["characters"] = captcha["characters"]
+
+        # Random selection of the option of the captcha validation for "nums" case
+        if captcha_mode == "nums":
+            captcha_option = CAPTCHA_OPTION[randint(0,4)] 
+
     captcha["image"].save(img_file_path, "png")
     return captcha_result
 
@@ -595,13 +606,17 @@ def get_update_user_lang(update_user_data):
     return lang
 
 
-def is_captcha_num_solve(captcha_mode, msg_text, solve_num):
+def is_captcha_num_solve(captcha_mode, msg_text, solve_num, captcha_option):
     '''Check if number send by user solves a num/hex/ascii/math captcha.
     - For "math", the message must be the exact math equation result number.
+    - For "nums", the message must corresponds to the captcha selected (reverse, ascending, descending, odd <-> even)
     - For other mode, the message must contains the numbers.'''
     if captcha_mode == "math":
         if msg_text == solve_num:
             return True
+    elif captcha_mode == "nums":
+        if (msg_text == fake_number_changed(captcha_option, solve_num)):
+           return True
     else:
         if solve_num.lower() in msg_text.lower():
             return True
@@ -959,6 +974,35 @@ def chat_member_status_change(update: Update, context: CallbackContext):
             # Note: Img caption must be <= 1024 chars
             img_caption = TEXT[lang]["NEW_USER_MATH_CAPTION"].format( \
                     join_user_name, chat_title, timeout_str)
+
+        elif captcha_mode == "nums":
+            captcha_num = captcha["characters"]
+            printts("[{}] Sending captcha message to {}: {}...".format( \
+                    chat_id, join_user_name, captcha_num))
+            if captcha_option == "reverse":
+                img_caption = TEXT[lang]["NEW_USER_NUMS_CAPTION_REVERSE"].format( \
+                    join_user_name, chat_title, timeout_str)
+            elif captcha_option == "descending":
+                img_caption = TEXT[lang]["NEW_USER_NUMS_CAPTION_DESCENDING"].format( \
+                    join_user_name, chat_title, timeout_str)
+            elif captcha_option == "ascending":
+                img_caption = TEXT[lang]["NEW_USER_NUMS_CAPTION_ASCENDING"].format( \
+                    join_user_name, chat_title, timeout_str)
+            elif captcha_option == "odd-even":
+                img_caption = TEXT[lang]["NEW_USER_NUMS_CAPTION_ODD_EVEN"].format( \
+                    join_user_name, chat_title, timeout_str)
+
+            elif captcha_option == "even-odd":
+                img_caption = TEXT[lang]["NEW_USER_NUMS_CAPTION_EVEN_ODD"].format( \
+                    join_user_name, chat_title, timeout_str)
+            else:
+                captcha_num = captcha["characters"]
+                printts("[{}] Sending new captcha msg: {}...".format( \
+                        chat_id, captcha_num))
+                img_caption = TEXT[lang]["NEW_USER_NUMS_CAPTION_REVERSE"].format( \
+                    join_user_name, chat_title, timeout_str)
+
+
         else:
             captcha_num = captcha["characters"]
             printts("[{}] Sending captcha message to {}: {}...".format( \
@@ -1251,7 +1295,7 @@ def msg_nocmd(update: Update, context: CallbackContext):
     printts("[{}] Received captcha reply from {}: {}".format(chat_id, user_name, msg_text))
     # Check if the expected captcha solve number is in the message
     solve_num = new_users[chat_id][user_id]["join_data"]["captcha_num"]
-    if is_captcha_num_solve(captcha_mode, msg_text, solve_num):
+    if is_captcha_num_solve(captcha_mode, msg_text, solve_num, captcha_option):
         printts("[{}] Captcha solved by {}".format(chat_id, user_name))
         # Remove all restrictions on the user
         tlg_unrestrict_user(bot, chat_id, user_id)
@@ -1497,6 +1541,31 @@ def button_request_captcha(bot, query):
                 captcha["equation_str"], captcha_num))
         img_caption = TEXT[lang]["NEW_USER_MATH_CAPTION"].format(user_name, \
             chat_title, timeout_str)
+    elif captcha_mode == "nums":
+        captcha_num = captcha["characters"]
+        printts("[{}] Sending new captcha msg: {}...".format( \
+                chat_id, captcha_num))
+        if captcha_option == "reverse":
+            img_caption = TEXT[lang]["NEW_USER_NUMS_CAPTION_REVERSE"].format(user_name, \
+                chat_title, timeout_str)
+        elif captcha_option == "descending":
+            img_caption = TEXT[lang]["NEW_USER_NUMS_CAPTION_DESCENDING"].format(user_name, \
+                chat_title, timeout_str)
+        elif captcha_option == "ascending":
+            img_caption = TEXT[lang]["NEW_USER_NUMS_CAPTION_ASCENDING"].format(user_name, \
+                chat_title, timeout_str)
+        elif captcha_option == "odd-even":
+            img_caption = TEXT[lang]["NEW_USER_NUMS_CAPTION_ODD_EVEN"].format(user_name, \
+                chat_title, timeout_str)
+        elif captcha_option == "even-odd":
+            img_caption = TEXT[lang]["NEW_USER_NUMS_CAPTION_EVEN_ODD"].format(user_name, \
+                chat_title, timeout_str)
+        else:
+            captcha_num = captcha["characters"]
+            printts("[{}] Sending new captcha msg: {}...".format( \
+                    chat_id, captcha_num))
+            img_caption = TEXT[lang]["NEW_USER_NUMS_CAPTION_REVERSE"].format(user_name, \
+                chat_title, timeout_str)           
     else:
         captcha_num = captcha["characters"]
         printts("[{}] Sending new captcha msg: {}...".format( \
