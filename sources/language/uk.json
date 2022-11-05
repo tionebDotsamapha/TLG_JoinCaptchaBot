@@ -279,5 +279,21 @@
         "Конфігурацію змінено, усі повідомлення, надіслані користувачами, які не вирішили капчу, будуть видалені.",
 
     "RM_ALL_MSGS_AFTER_KICK_OFF":
-        "Конфігурацію змінено, повідомлення, надіслані користувачами, які не розгадали капчу, не видалятимуться."
-}
+        "Конфігурацію змінено, повідомлення, надіслані користувачами, які не розгадали капчу, не видалятимуться.",
+        
+        "NEW_USER_NUMS_CAPTION_REVERSE":
+             "Bonjour {}, et bienvenue dans le groupe {}. Veuillez envoyer un message avec le numéro qui apparaît dans le captcha en inversant l'ordre des chiffres pour vérifier que vous êtes un humain. Si vous ne résolvez pas le captcha en {}, vous allez être automatiquement éjecté du groupe. Faites attention aux majuscules et minuscules.",
+    
+        "NEW_USER_NUMS_CAPTION_ASCENDING":
+               "Bonjour {}, et bienvenue dans le groupe {}. Veuillez envoyer un message avec le numéro qui apparaît dans le captcha en rangeant les chiffres dans l'ordre croissant pour vérifier que vous êtes un humain. Si vous ne résolvez pas le captcha en {}, vous allez être automatiquement éjecté du groupe. Faites attention aux majuscules et minuscules.",
+    
+        "NEW_USER_NUMS_CAPTION_DESCENDING":
+            "Bonjour {}, et bienvenue dans le groupe {}. Veuillez envoyer un message avec le numéro qui apparaît dans le captcha en rangeant les chiffres dans l'ordre décroissant pour vérifier que vous êtes un humain. Si vous ne résolvez pas le captcha en {}, vous allez être automatiquement éjecté du groupe. Faites attention aux majuscules et minuscules.",
+    
+        "NEW_USER_NUMS_CAPTION_ODD_EVEN":
+            "Bonjour {}, et bienvenue dans le groupe {}. Veuillez envoyer un message avec le numéro qui apparaît dans le captcha en commençant par les chiffres pairs pour vérifier que vous êtes un humain. Si vous ne résolvez pas le captcha en {}, vous allez être automatiquement éjecté du groupe. Faites attention aux majuscules et minuscules.",
+    
+        "NEW_USER_NUMS_CAPTION_EVEN_ODD":
+            "Bonjour {}, et bienvenue dans le groupe {}. Veuillez envoyer un message avec le numéro qui apparaît dans le captcha en commençant par les chiffres impairs pour vérifier que vous êtes un humain. Si vous ne résolvez pas le captcha en {}, vous allez être automatiquement éjecté du groupe. Faites attention aux majuscules et minuscules."
+    
+    }

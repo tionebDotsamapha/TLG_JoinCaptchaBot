@@ -110,6 +110,21 @@
     "NEW_USER_MATH_CAPTION":
         "Hello {}, welcome to {}. Please write a message with the result of this math equation to verify that you are a human. If you don't solve this captcha in {}, you will be automatically kicked out of the group.",
 
+    "NEW_USER_NUMS_CAPTION_REVERSE":
+    "Bonjour {}, et bienvenue dans le groupe {}. Veuillez envoyer un message avec le numéro qui apparaît dans le captcha en inversant l'ordre des chiffres pour vérifier que vous êtes un humain. Si vous ne résolvez pas le captcha en {}, vous allez être automatiquement éjecté du groupe.",
+
+    "NEW_USER_NUMS_CAPTION_ASCENDING":
+    "Bonjour {}, et bienvenue dans le groupe {}. Veuillez envoyer un message avec le numéro qui apparaît dans le captcha en rangeant les chiffres dans l'ordre croissant pour vérifier que vous êtes un humain. Si vous ne résolvez pas le captcha en {}, vous allez être automatiquement éjecté du groupe.",
+
+    "NEW_USER_NUMS_CAPTION_DESCENDING":
+    "Bonjour {}, et bienvenue dans le groupe {}. Veuillez envoyer un message avec le numéro qui apparaît dans le captcha en rangeant les chiffres dans l'ordre décroissant pour vérifier que vous êtes un humain. Si vous ne résolvez pas le captcha en {}, vous allez être automatiquement éjecté du groupe.",
+
+    "NEW_USER_NUMS_CAPTION_ODD_EVEN":
+    "Bonjour {}, et bienvenue dans le groupe {}. Veuillez envoyer un message avec le numéro qui apparaît dans le captcha en rangeant les chiffres dans l'ordre décroissant en commençant par les chiffres impairs pour vérifier que vous êtes un humain. Si vous ne résolvez pas le captcha en {}, vous allez être automatiquement éjecté du groupe.",
+
+    "NEW_USER_NUMS_CAPTION_EVEN_ODD":
+    "Bonjour {}, et bienvenue dans le groupe {}. Veuillez envoyer un message avec le numéro qui apparaît dans le captcha en rangeant les chiffres dans l'ordre décroissant en commençant par les chiffres pairs pour vérifier que vous êtes un humain. Si vous ne résolvez pas le captcha en {}, vous allez être automatiquement éjecté du groupe.",
+
     "NEW_USER_BUTTON_MODE":
         "Bonjour {}, et bienvenue dans le groupe {}. Afin de vérifier que vous n'êtes pas un robot, veuillez appuyer sur le bouton. Si cette action n'est pas réalisée dans {}, vous serez automatiquement prélevé à la source.\n\n",
 
@@ -117,10 +132,10 @@
         "Captcha résolu, utilisateur vérifié\nBienvenue dans le groupe {}",
 
     "CAPTCHA_INCORRECT_0":
-        "Incorrect. Essayez encore...",
+        "Incorrect. Essayez encore... Relisez bien!",
 
     "CAPTCHA_INCORRECT_1":
-        "Incorrect. Vérifiez que votre réponse contienne 4 chiffres...",
+        "Incorrect. Vérifiez que votre réponse contienne 4 chiffres... Tout est dans l'instruction",
 
     "CAPTCHA_INCORRECT_MATH":
         "That is not the correct number. Check closely, you need to solve the math equation...",
