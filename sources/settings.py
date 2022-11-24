@@ -55,7 +55,7 @@ SETTINGS = {
     "CAPTCHABOT_F_BAN_GROUPS": SCRIPT_PATH + "/data/bannedgroups.txt",
 
     # Initial language at Bot start
-    "CAPTCHABOT_INIT_LANG": "EN",
+    "CAPTCHABOT_INIT_LANG": "FR",
 
     # Initial enable/disable status at Bot start
     "CAPTCHABOT_INIT_ENABLE": True,
